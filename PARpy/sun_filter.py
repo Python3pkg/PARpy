@@ -40,7 +40,7 @@ def filter_solar_angle(lat, lon, dates, angle=30, temp=0):
             ang = Pysolar.GetAltitude(lat, lon, h,
                                       temperature_celsius=temp)
             angles.append(ang)
-            print ang
+            print(ang)
 
     angles = np.array(angles)
     dates = np.array(dates)

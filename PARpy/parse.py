@@ -61,7 +61,7 @@ def h5_extract(filelist):
     for filename in filelist:
         f = h5py.File(filename)
         ff = f['Photosynthetically Available Radiation']['Reference_Par_hyperspectral']
-        print("Processing File ", filename)
+        print(("Processing File ", filename))
         # Processing Raw file
         try:
             raw = open(filename.replace('_L4.h5', '.raw'), "rb")
@@ -141,7 +141,7 @@ def mat_extract(indir):
     d = {}
     for filename in sorted(glob.glob(os.path.join(indir, '*.mat'))):
         f = loadmat(filename)
-        print("Processing File:", filename)
+        print(("Processing File:", filename))
         dat = f['hdfdata']['Reference_Par_hyperspectral_data']
         dates = dat[0,0][:,0]
         hours = np.int64(dat[0,0][:,1])
@@ -161,10 +161,10 @@ def mat_extract(indir):
                     tt = datetime.strptime(str(hour), "%H%M%S%f")
                     at = (tt + timedelta(days=ttd)).replace(year=tty)
                     d['hours'].append(at)
-                    print('igual maior que 8', hour)
+                    print(('igual maior que 8', hour))
             else:
                 d['hours'].append(np.nan)
-                print('nan', hour)
+                print(('nan', hour))
 
         if d:
             dicts.append(d)
